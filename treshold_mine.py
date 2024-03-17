@@ -3,8 +3,8 @@ import os
 import numpy as np
 
 # path to input image is specified
-image_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\semi-good'
-path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\obrazky\masks\all_masks'
+image_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\leto2023\masky_druhykrat'
+path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\leto2023\masky_dilate2'
 
 images = os.listdir(image_path)
 
@@ -27,7 +27,8 @@ for image_file in images:
     #ret, image_mask = cv2.threshold(image_gray, thresh, 255, cv2.THRESH_BINARY)
     #print("Thresh: ", ret)
     kernel = np.ones((2, 2), np.uint8)
-    mask = cv2.erode(im_bw, kernel)
+    mask = cv2.dilate(im_bw, kernel, iterations=2)
+    mask = cv2.erode(im_bw, kernel, iterations=2)
     #mask = cv2.morphologyEx(im_bw, cv2.MORPH_OPEN, kernel)
 
     # the window showing output images
