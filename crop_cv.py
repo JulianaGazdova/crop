@@ -2,16 +2,16 @@ import cv2
 import os
 import numpy as np
 
-image_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\images'
-labels_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\labels'
-path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\cropped_galaxies'
+image_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images'
+labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\labels'
+path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies'
 
 
 def crop_image(coords: str, img: np.ndarray, image_name: str):
     dh, dw, _ = img.shape
 
     box = coords
-    class_id, x_center, y_center, w, h = box.strip().split()
+    _, x_center, y_center, w, h, _ = box.strip().split()
     x_center, y_center, w, h = float(x_center), float(y_center), float(w), float(h)
     x_center = round(x_center * dw)
     y_center = round(y_center * dh)

@@ -1,26 +1,25 @@
 import os
 
-import aplpy
 import cv2
 import numpy as np
 from PIL import Image
 from astropy.io import fits
-from matplotlib import pyplot as plt
 
 # Define the paths to the FITS file and the mask in JPG format
-FITS_DIR = 'C:/Users/Administrator/Desktop/skola/Bc/3.rok/BP/codes/crop/test_set/test_fity_5'
-MASKS_DIR = 'C:/Users/Administrator/Desktop/skola/Bc/3.rok/BP/codes/crop/test_set/image_mask_5'
-OUTPUT_DIR = 'C:/Users/Administrator/Desktop/skola/Bc/3.rok/BP/codes/crop/test_set/test_fit_coord'
+FITS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\fits'
+MASKS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images_masks'
+OUTPUT_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_fits'
 FITS_FILENAMES = os.listdir(FITS_DIR)
+MASK_FILENAMES = os.listdir(MASKS_DIR)
 
-for fit_filename in FITS_FILENAMES:
+for mask_filename in MASK_FILENAMES:
     # Open the FITS file
-    with fits.open(f"{FITS_DIR}/{fit_filename}") as hdul:
+    with fits.open(fr"{FITS_DIR}\{mask_filename.split(' ')[0]}.fit.gz") as hdul:
         # Access the data array of the primary HDU (assuming it's the first extension)
         data = hdul[0].data
 
         # Open the mask image
-        mask_image = Image.open(f"{MASKS_DIR}/{fit_filename.split('.')[0]}.jpg")
+        mask_image = Image.open(fr"{MASKS_DIR}\{mask_filename}")
         # mask_image = cv2.imread(mask_file_path)
         desired_width = data.shape[1]
         desired_height = data.shape[0]
@@ -45,14 +44,14 @@ for fit_filename in FITS_FILENAMES:
 
         # Save the extracted data to a new FITS file
         # output_file_path = 'fpC-005194-g5-0367_extracted.fit'
-        hdul_new.writeto(f"{OUTPUT_DIR}/{fit_filename}", overwrite=True)
+        hdul_new.writeto(fr"{OUTPUT_DIR}\{mask_filename.split('.')[0]}.fit.gz", overwrite=True, output_verify='ignore')
 
-        ### show before with aplpy
-        gc = aplpy.FITSFigure(f"{FITS_DIR}/{fit_filename}")
-        gc.show_grayscale(invert=False, stretch='power', exponent=0.5)
-        plt.show()
-
-        ### show result with aplpy
-        gc = aplpy.FITSFigure(f"{OUTPUT_DIR}/{fit_filename}")
-        gc.show_grayscale(invert=False, stretch='power', exponent=0.5)
-        plt.show()
+        # ### show before with aplpy
+        # gc = aplpy.FITSFigure(fr"{FITS_DIR}\{mask_filename.split(' ')[0]}.fit.gz")
+        # gc.show_grayscale(invert=False, stretch='power', exponent=0.5)
+        # plt.show()
+        #
+        # ### show result with aplpy
+        # gc = aplpy.FITSFigure(fr"{OUTPUT_DIR}\{mask_filename.split('.')[0]}.fit.gz")
+        # gc.show_grayscale(invert=False, stretch='power', exponent=0.5)
+        # plt.show()

@@ -2,10 +2,10 @@ import cv2
 import os
 import numpy as np
 
-whole_galaxies_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\test_set\test_whole_galaxies'
-labels_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\test_set\test_coords'
-masks_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\test_set\test_cropped_masks'
-dest_path = r'C:\Users\Administrator\Desktop\skola\3.rok\BP\codes\crop\test_set\image_masks'
+whole_galaxies_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images'
+labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\labels'
+masks_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_masks'
+dest_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images_masks'
 
 
 def paste_image(coords: str, img: np.ndarray, image_name: str, mask: np.ndarray):
@@ -67,5 +67,6 @@ def paste_image_and_save():
     print("Printing missing coordinates:")
     for coords in missing_coords:
         print(coords)
+
 
 paste_image_and_save()
