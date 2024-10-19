@@ -2,10 +2,10 @@ import cv2
 import os
 import numpy as np
 
-whole_galaxies_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images'
-labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\labels'
-masks_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_masks'
-dest_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images_masks'
+whole_galaxies_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\images'
+labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\labels'
+masks_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies_masks'
+dest_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\images_masks'
 
 
 def paste_image(coords: str, img: np.ndarray, image_name: str, mask: np.ndarray):

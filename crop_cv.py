@@ -2,9 +2,9 @@ import cv2
 import os
 import numpy as np
 
-image_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images'
-labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\labels'
-path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies'
+image_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\images'
+labels_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\labels'
+path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies'
 
 
 def crop_image(coords: str, img: np.ndarray, image_name: str):
@@ -42,4 +42,3 @@ def crop_and_save():
 
 
 crop_and_save()
-

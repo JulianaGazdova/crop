@@ -6,9 +6,9 @@ from PIL import Image
 from astropy.io import fits
 
 # Define the paths to the FITS file and the mask in JPG format
-FITS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\fits'
-MASKS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\images_masks'
-OUTPUT_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_fits'
+FITS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\fits'
+MASKS_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\images_masks'
+OUTPUT_DIR = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies_fits'
 FITS_FILENAMES = os.listdir(FITS_DIR)
 MASK_FILENAMES = os.listdir(MASKS_DIR)
 

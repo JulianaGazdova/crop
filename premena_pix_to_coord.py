@@ -24,9 +24,9 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-FIT_PATH = r"C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_fits"
+FIT_PATH = r"C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies_fits"
 YOLO_OUTPUT_PATH = (
-    r"C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\labels"
+    r"C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\labels"
 )
 
 
@@ -99,7 +99,7 @@ def get_skycoord(fit_output: FitOutput, yolo_output: YoloOutput) -> SkyCoord:
 
 
 def get_galaxy_name_simbad(ra_deg, dec_deg) -> str:
-    # Prvy sposob hladania galaxie - z databazy SIMBAD
+    # first way of getting parameters from database SIMBAD
     coords = SkyCoord(
         ra=ra_deg, dec=dec_deg, unit="deg", frame="icrs", equinox="J2000.0"
     )
@@ -112,7 +112,7 @@ def get_galaxy_name_simbad(ra_deg, dec_deg) -> str:
 
 
 def get_galaxy_name_ned(sky_coord: SkyCoord) -> str:
-    # Druhy sposob hladania - z databazy NED
+    # second way of getting parameters from database NED
     result_table = Ned.query_region(
         sky_coord, radius=0.001 * units.deg, equinox="J2000.0"
     )
@@ -185,4 +185,4 @@ def process_all_fits(fit_dir_path: str) -> pd.DataFrame:
 
 result_df = process_all_fits(FIT_PATH)
 print(f"Galaxies processed: {len(result_df)}")
-result_df.to_excel("galaxies_data.xlsx", index=False)
+result_df.to_excel("galaxy_data.xlsx", index=False)

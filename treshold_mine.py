@@ -3,8 +3,8 @@ import os
 import numpy as np
 
 # path to input image is specified
-image_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies'
-path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\dataset_after_yolo\galaxies_masks'
+image_path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies'
+path = r'C:\Users\Administrator\Desktop\skola\Bc\3.rok\BP\codes\crop\false_positive\galaxies_masks'
 
 images = os.listdir(image_path)
 
